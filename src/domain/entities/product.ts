@@ -1,15 +1,18 @@
-import { TEntity } from "./interfaces/base-entity";
-import { TProductCategory } from "./interfaces/base-prod-category";
+import { TEntity } from "./interfaces/base-entity.js";
+import { ProductCategory } from "./product-category.js";
 
-export class Product extends TEntity{
+export class Product extends TEntity
+{            
 
-    constructor( readonly description: string
-                ,readonly price: number                
-                ,readonly category: TProductCategory
-                ,readonly expirationDate?: Date
-                ,readonly unit?: number
-                ,readonly urlImage?: string ) {
+    constructor( readonly _description: string
+                ,readonly  price: number                
+                ,readonly  category: ProductCategory
+                ,readonly registerCriationDate: Date
+                ,readonly  expirationDate?: Date
+                ,readonly  measureUnit?: number
+                ,readonly  urlImage?: string )
+    {
         super();
+        this.registerCriationDate = new Date();
     }
-
 }
