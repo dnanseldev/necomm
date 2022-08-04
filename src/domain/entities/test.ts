@@ -3,32 +3,34 @@ import { Guid } from "guid-typescript";
 
 import { ProductCategory } from "./product-category.js";
 import { InvalidDescritionError } from "./validation/application-error.js";
+import { Result } from "./validation/result-error.js";
 
 const pc = new ProductCategory(
     Guid.create()
-    ,'Bo'
+    ,'Boo'
     ,true
 )
 
 //console.log(pc.info)
 
 
-function mysimulateError (input: string): (boolean|null)  {
-    let re = /\w{3,}/g
-    if ( !re.exec(input) )
-      return null
-      //throw new InvalidDescritionError('Format description is incorrect')      
+function mysimulateError (pc: ProductCategory): Result<ProductCategory> {
+    let re = /^\w{3,}$/g
 
-    console.log(input)
-    return true;
+    if ( !re.exec(pc.description) )
+      return Result.fail<ProductCategory>('Format description is incorrect')     
 
+    return Result.ok<ProductCategory>(pc)
 }
 
 
 try {
-    if ( !mysimulateError('Bo7') ) //'@Bk$5'
-      console.log('Format description is incorrect')
-       //throw new InvalidDescritionError('Format description is incorrect')
+    const pcOrFail = mysimulateError(pc)
+    
+    if ( pcOrFail.isFailure )
+      console.log(pcOrFail.error)
+
+    console.log(pcOrFail)
 } catch (error) {
     console.log(error)
 

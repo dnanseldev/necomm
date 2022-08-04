@@ -1,7 +1,7 @@
 import { TEntity } from "./interfaces/base-entity.js";
 
 export class ProductCategory extends TEntity
-{
+{   
     
     constructor( Eid: any
                 ,private _description: string
@@ -32,6 +32,10 @@ export class ProductCategory extends TEntity
 
     inactivate(): void {
         this._active = false;
+    }
+
+    get description(): string {
+        return this._description;
     }
 
     get info() {
