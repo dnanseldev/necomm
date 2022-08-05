@@ -1,10 +1,12 @@
 import { Guid } from "guid-typescript";
+import { Result } from "../validation/result-error";
+import { ProductCategory } from "./product/product-category";
+import { ProductCategoryFactory } from "./product/product_factories";
 
 
-import { ProductCategory } from "./product-category.js";
-import { InvalidDescritionError } from "./validation/application-error.js";
-import { Result } from "./validation/result-error.js";
 
+//#region Test01
+/*
 const pc = new ProductCategory(
     Guid.create()
     ,'Boo'
@@ -35,3 +37,17 @@ try {
     console.log(error)
 
 }
+*/
+//#endregion Test01
+
+const catOrErr: Result<ProductCategory> = new ProductCategoryFactory() 
+                                               .factoryMethod( Guid.create()
+                                                               ,'Marmita Executiva Grande')
+
+ if ( catOrErr.isFailure ) 
+   console.log(catOrErr.error)
+ else {
+    const cat: ProductCategory = catOrErr.getValue() 
+    console.log(cat)
+ }
+   

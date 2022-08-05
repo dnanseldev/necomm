@@ -1,4 +1,5 @@
-import { TEntity } from "./interfaces/base-entity.js";
+
+import { TEntity } from "../interfaces/base-entity.js";
 import { ProductCategory } from "./product-category.js";
 
 export class Product extends TEntity
