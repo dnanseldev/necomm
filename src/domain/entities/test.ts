@@ -40,14 +40,15 @@ try {
 */
 //#endregion Test01
 
-const catOrErr: Result<ProductCategory> = new ProductCategoryFactory() 
-                                               .factoryMethod( Guid.create()
-                                                               ,'Marmita Executiva Grande')
+
+
+const catOrErr: Result<ProductCategory> = new ProductCategoryFactory().factoryMethod( Guid.create(), 'Marmita Executiva Especial' )
 
  if ( catOrErr.isFailure ) 
    console.log(catOrErr.error)
  else {
     const cat: ProductCategory = catOrErr.getValue() 
-    console.log(cat)
+    console.log(cat.info)    
  }
    
+//#endregion Test01

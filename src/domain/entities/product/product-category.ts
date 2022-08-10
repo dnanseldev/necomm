@@ -2,10 +2,11 @@ import { TEntity } from "../interfaces/base-entity";
 
 
 export class ProductCategory extends TEntity
-{    
+{ 
+    private _active: boolean = false
+
     constructor( Eid: any
-                ,private _description: string
-                ,private _active: boolean = false)
+                ,private _description: string )
     {
         super()
         this.ID = Eid           
@@ -31,8 +32,6 @@ export class ProductCategory extends TEntity
 
     get info()
     {
-        return `ID: ${this.EntityID}
-                Desc: ${this._description}
-                Active: ${this._active}`
+        return `ID: ${this.EntityID} Desc: ${this._description} Active: ${this._active}`
     }
 }
