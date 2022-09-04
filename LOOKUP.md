@@ -31,3 +31,7 @@
  # ssh-keygen -R <host>
 > ssh-keygen -R 192.168.59.100
 
+# Fix git changed password
+> git config --global --unset user.password
+> git config --global --add user.password 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
+
