@@ -8,7 +8,7 @@
 > docker login
 
 # Build an image docker
-> docker build --network=host -t danstonebuilt/necomm:1.0.0 .
+> docker build . --network=host -t danstonebuilt/necomm:1.0.0
 
 # Push an image to repository
 > docker push danstonebuilt/necomm:1.0.0
